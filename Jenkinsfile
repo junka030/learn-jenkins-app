@@ -23,12 +23,12 @@ pipeline {
             }
         }
         
-        stage('Test') {
+        stage('Tests') {
             agent {
                 docker {
                     image 'node:18-alpine'
                     reuseNode true
-                 }
+                }
             }
 
             steps {
@@ -36,7 +36,7 @@ pipeline {
                     test -f build/index.html 
                     npm test
                 '''
-            }
+            }   
 
             post {
                 always {
@@ -61,6 +61,4 @@ pipeline {
             }
         } 
     }
-
-
 }
